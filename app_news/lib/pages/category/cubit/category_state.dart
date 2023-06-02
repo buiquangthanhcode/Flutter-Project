@@ -12,7 +12,7 @@ class CategoryInitial extends CategoryState {
 class CategoryLoading extends CategoryState {
   const CategoryLoading();
 }
-class CategoryLoaded extends CategoryState {
+class CategoryLoaded extends CategoryState {  
   const CategoryLoaded();
 }
 class CategoryError extends CategoryState {

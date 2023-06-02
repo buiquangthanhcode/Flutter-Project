@@ -1,4 +1,5 @@
 import 'package:app_news/app/routes/route_name.dart';
+import 'package:app_news/pages/article/views/detail_page.dart';
 import 'package:app_news/pages/home/views/home_page.dart';
 import 'package:app_news/pages/login/views/login_page.dart';
 import 'package:app_news/pages/navigation/navigation_bottom.dart';
@@ -16,6 +17,8 @@ class AppRoute {
         return MaterialPageRoute(builder: (_) => const NavigationBottom());
       case AppRouterName.loginPage:
         return MaterialPageRoute(builder: (_) => const LoginPage());
+      case AppRouterName.detailPage:
+        return MaterialPageRoute(builder: (_) =>  DetailPage(data: args,));
       case AppRouterName.homePage:
         return MaterialPageRoute(builder: (_) => const HomePage());
       default:

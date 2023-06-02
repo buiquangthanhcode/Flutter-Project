@@ -1,6 +1,8 @@
 import 'package:app_news/models/articles.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../../app/routes/route_name.dart';
+
 class List_Article_By_Id_Category extends StatelessWidget {
   List_Article_By_Id_Category({super.key, required this.dataArticle});
   List<Articles> dataArticle;
@@ -15,45 +17,51 @@ class List_Article_By_Id_Category extends StatelessWidget {
       itemBuilder: (context, index) {
         return Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10),
-          child: Row(
-            children: [
-              Flexible(
-                flex: 1,
-                child: Container(
-                    width: 120,
-                    height: 120,
-                    decoration: BoxDecoration(
-                      color: Colors.grey,
-                      borderRadius: BorderRadius.circular(10),
-                      image: DecorationImage(
-                        image: NetworkImage(dataArticle[index].thumb),
-                        fit: BoxFit.cover,
-                      ),
-                    )),
-              ),
-              Flexible(
-                flex: 1,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(dataArticle[index].category.name),
-                      Text(
-                        dataArticle[index].title,
-                        maxLines: 2,
-                        style: const TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.bold),
-                      ),
-                      Text(
-                        dataArticle[index].description,
-                        maxLines: 2,
-                      ),
-                    ],
-                  ),
+          child: InkWell(
+            onTap: () {
+              Navigator.pushNamed(context, AppRouterName.detailPage,
+                  arguments: dataArticle[index]);
+            },
+            child: Row(
+              children: [
+                Flexible(
+                  flex: 1,
+                  child: Container(
+                      width: 120,
+                      height: 120,
+                      decoration: BoxDecoration(
+                        color: Colors.grey,
+                        borderRadius: BorderRadius.circular(10),
+                        image: DecorationImage(
+                          image: NetworkImage(dataArticle[index].thumb),
+                          fit: BoxFit.cover,
+                        ),
+                      )),
                 ),
-              )
-            ],
+                Flexible(
+                  flex: 1,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(dataArticle[index].category.name),
+                        Text(
+                          dataArticle[index].title,
+                          maxLines: 2,
+                          style: const TextStyle(
+                              fontSize: 18, fontWeight: FontWeight.bold),
+                        ),
+                        Text(
+                          dataArticle[index].description,
+                          maxLines: 2,
+                        ),
+                      ],
+                    ),
+                  ),
+                )
+              ],
+            ),
           ),
         );
       },
